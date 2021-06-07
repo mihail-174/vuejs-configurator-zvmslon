@@ -1,0 +1,139 @@
+$norma:                 14px;    // основной размер шрифта
+$normaMinus:            14px;    // уменьшенный размер шрифта
+$normaPlus:             16px;    // увеличенный размер шрифта
+
+$font: arial;
+
+$body: (
+    font-family:        $font,
+    font-size:          $norma,
+    font-weight:        400,
+    line-height:        1.4,
+    color:              #333,
+);
+$h1: (
+    font-size:          42px,
+    font-weight:        700,
+    line-height:        1.0951,
+    color:              #333,
+    margin:             64px 0 42px,
+);
+$h2: (
+    font-size:          32px,
+    font-weight:        700,
+    line-height:        40px,
+    color:              #333,
+    margin:             80px 0 42px,
+);
+$h3: (
+    font-size:          24px,
+    font-weight:        700,
+    line-height:        40px,
+    color:              #333,
+    margin:             70px 0 17px,
+);
+$h4: (
+    font-size:          $norma,
+    font-weight:        700,
+    line-height:        1.4,
+    color:              #333,
+    margin:             10px 0,
+);
+$p: (
+    margin:             30px 0,
+);
+$a: (
+    color:              #616161,
+    text-decoration:    none,
+    border-bottom:      1px solid #616161,
+);
+$a-hover: (
+    color:              #ae2121,
+    text-decoration:    none,
+    border-bottom:      transparent,
+);
+
+// \002D - ДЕФИС
+// \2022 - ТОЧКА
+$list: (
+    margin:             30px 0,
+);
+$ul: (
+    padding-left:       10px,
+    before-content:     "\002D",
+    before-top:         0,
+    before-left:        -12px,
+);
+$ol: (
+    padding-left:       25px,
+    before-top:         0,
+    before-left:        -22px,
+);
+$li: (
+    margin:             8px,
+    list-style:         none,
+    before-color:       #d91e36,
+    before-font-size:   20px,
+);
+$table: (
+    margin:             30px 0,
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Задний фон для модальных окон
+$overlayBackgroundColor: rgba(0, 0, 0, 0.5);
+
+$rouble: Rouble;
+
+$fontSize: (
+    h1:                30px,    // заголовок страницы
+    h2:                22px,    // заголовок второго уровня
+    h3:                16px,    // заголовок третьего уровня
+    norma:             14px,    // основной размер шрифта
+    normaMinus:        14px,    // уменьшенный размер шрифта
+    normaPlus:         16px,    // увеличенный размер шрифта
+    priceNone:         15px,    // нет цены (цена по запросу)
+    priceNoneBig:      20px,    // нет цены (цена по запросу) в карточке единицы (техники, товара)
+    price:             22px,    // цена в списке техники
+    priceBig:          31px,    // цена в карточке единицы (техники, товара)
+    privacyPolicy:     12px,    // текст политики конфидициальности
+    presence:          15px,    // в наличии/под заказ
+    input:             14px,    // текстовые поля
+    textarea:          14px,    // текстовые поля
+);
+
+$lineHeight: (
+    h1:                34px,
+    h2:                26px,
+    h3:                24px,
+);
+
+$padding: 70px 0; // внутренний отступ секции/блока.
+
+$margin: (
+    h1:         0,              // заголовок страницы
+    h2:         40px 0 20px,    // заголовок второго уровня
+    h3:         20px 0 15px,    // заголовок третьего уровня
+    block:      0 0 70px,       // основной отступ снизу блока.
+    block2:     0 0 50px,       // дополнительный отступ снизу блока, уменьшенный.
+    p:          0 0 15px,       // абзац
+    ul:         0 0 15px,       // маркированный список
+    ol:         0 0 15px,       // нумерованный список
+    table:      0 0 15px,       // таблица
+    hr:         40px 0          // разделитель
+);

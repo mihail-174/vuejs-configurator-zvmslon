@@ -1,0 +1,85 @@
+extends layout/default
+
+block variables
+    - const title = "Конфигуратор";
+    - const description = '';
+    - const keywords = '';
+    - const pageClass = '';
+
+block styles
+    +style('css/styles.min.css')
+
+block scripts
+    +script('https://cdn.jsdelivr.net/npm/jquery@1.11.0/dist/jquery.min.js')
+    +script('https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js')
+    +script('https://cdn.jsdelivr.net/npm/vue2-filters/dist/vue2-filters.min.js')
+    +script('js/config.min.js')
+
+block content
+    #app
+        h1 Конфигуратор:
+        .row
+            div
+                .autos
+                    .autos__auto(v-on:click="loadAuto(i)", :class="auto.active", v-for='(auto, i) in autos')
+                        .autos__name {{auto.name}}
+                        .autos__descr {{auto.descr}}
+                .model
+                    .model__label Модель шасси:
+                    .model__content
+                        .model__select
+                            select(v-model="chassisCost", @change='chassisSelect')
+                                option(v-for="item in chassis", :value='item.id') {{item.text}}
+                        .model__cost {{chassisCost | currency(' ₽', 0, { symbolOnLeft: false })}}
+                .model
+                    .model__label Модель насоса:
+                    .model__content
+                        .model__select
+                            select(v-model="pumpCost", @change='pumpSelect')
+                                option(v-for="item in pump", :value='item.id') {{item.text}}
+                        .model__cost {{pumpCost | currency(' ₽', 0, { symbolOnLeft: false })}}
+            .image
+                img(:src="image", alt="")
+
+        .row
+            .options
+                .options__item(v-for="(item, i) in options")
+                    .options__name
+                        input(type="checkbox", :id="'option-' +  i", :value="item.cost", @click="optionsChoice")
+                        label(:for="'option-' +  i") {{item.name}}
+                    .options__cost {{item.cost | currency(' ₽', 0, { symbolOnLeft: false })}}
+
+        form.form
+            .info-wrapper
+                .total {{totals | currency(' ₽', 0, { symbolOnLeft: false })}}
+                .text
+                    .col
+                        .ttl от 3-х дней
+                        .small Срок изготовления
+                    .col
+                        .ttl 18 месяцев
+                        .small Увеличенная гарантия
+            .wf
+                .wf__fields
+                    .wf__email.wf__field
+                        input(type="text", placeholder='E-mail')
+                    .wf__phone.wf__field
+                        input(type="text", placeholder='Телефон')
+                .wf__political Отправляя данную форму, я подтверждаю, что ознакомлен с Политикой конфиденциальности, и согласен на хранение и обработку предоставленных персональных данных.
+                .wf__action
+                    div Получить КП
+
+        .template-config
+            h2 Шаблон конфигуратора на почтовый ящик:
+            .cont
+                div Выбран: {{nameAuto}}
+                br
+                div Модель шасси: {{chassisName}} = {{chassisCost | currency(' ₽', 0, { symbolOnLeft: false })}}
+                div Модель насоса: {{pumpName}} = {{pumpCost | currency(' ₽', 0, { symbolOnLeft: false })}}
+                br
+                div Выбранные опции:
+                div(v-for="item in optionsListChecked")
+                    span {{item.name}}
+                    span {{item.val | currency(' ₽', 0, { symbolOnLeft: false })}}
+                br
+                div Общая стоимость: {{totals | currency(' ₽', 0, { symbolOnLeft: false })}}

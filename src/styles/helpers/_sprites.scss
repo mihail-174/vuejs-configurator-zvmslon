@@ -1,0 +1,145 @@
+// SCSS variables are information about icon's compiled state, stored under its original file name
+//
+// .icon-home {
+//   width: $icon-home-width;
+// }
+//
+// The large array-like variables contain all information about a single icon
+// $icon-home: x y offset_x offset_y width height total_width total_height image_path;
+//
+// At the bottom of this section, we provide information about the spritesheet itself
+// $spritesheet: width height image $spritesheet-sprites;
+$arrowhov-name: 'arrowhov';
+$arrowhov-x: 0px;
+$arrowhov-y: 0px;
+$arrowhov-offset-x: 0px;
+$arrowhov-offset-y: 0px;
+$arrowhov-width: 42px;
+$arrowhov-height: 44px;
+$arrowhov-total-width: 84px;
+$arrowhov-total-height: 61px;
+$arrowhov-image: '../img/sprite.png';
+$arrowhov: (0px, 0px, 0px, 0px, 42px, 44px, 84px, 61px, '../img/sprite.png', 'arrowhov', );
+$butbg-name: 'butbg';
+$butbg-x: 42px;
+$butbg-y: 0px;
+$butbg-offset-x: -42px;
+$butbg-offset-y: 0px;
+$butbg-width: 42px;
+$butbg-height: 44px;
+$butbg-total-width: 84px;
+$butbg-total-height: 61px;
+$butbg-image: '../img/sprite.png';
+$butbg: (42px, 0px, -42px, 0px, 42px, 44px, 84px, 61px, '../img/sprite.png', 'butbg', );
+$checked-name: 'checked';
+$checked-x: 0px;
+$checked-y: 44px;
+$checked-offset-x: 0px;
+$checked-offset-y: -44px;
+$checked-width: 18px;
+$checked-height: 17px;
+$checked-total-width: 84px;
+$checked-total-height: 61px;
+$checked-image: '../img/sprite.png';
+$checked: (0px, 44px, 0px, -44px, 18px, 17px, 84px, 61px, '../img/sprite.png', 'checked', );
+$email-name: 'email';
+$email-x: 51px;
+$email-y: 44px;
+$email-offset-x: -51px;
+$email-offset-y: -44px;
+$email-width: 19px;
+$email-height: 13px;
+$email-total-width: 84px;
+$email-total-height: 61px;
+$email-image: '../img/sprite.png';
+$email: (51px, 44px, -51px, -44px, 19px, 13px, 84px, 61px, '../img/sprite.png', 'email', );
+$nocheked-name: 'nocheked';
+$nocheked-x: 35px;
+$nocheked-y: 44px;
+$nocheked-offset-x: -35px;
+$nocheked-offset-y: -44px;
+$nocheked-width: 16px;
+$nocheked-height: 16px;
+$nocheked-total-width: 84px;
+$nocheked-total-height: 61px;
+$nocheked-image: '../img/sprite.png';
+$nocheked: (35px, 44px, -35px, -44px, 16px, 16px, 84px, 61px, '../img/sprite.png', 'nocheked', );
+$phone-name: 'phone';
+$phone-x: 18px;
+$phone-y: 44px;
+$phone-offset-x: -18px;
+$phone-offset-y: -44px;
+$phone-width: 17px;
+$phone-height: 17px;
+$phone-total-width: 84px;
+$phone-total-height: 61px;
+$phone-image: '../img/sprite.png';
+$phone: (18px, 44px, -18px, -44px, 17px, 17px, 84px, 61px, '../img/sprite.png', 'phone', );
+$spritesheet-width: 84px;
+$spritesheet-height: 61px;
+$spritesheet-image: '../img/sprite.png';
+$spritesheet-sprites: ($arrowhov, $butbg, $checked, $email, $nocheked, $phone, );
+$spritesheet: (84px, 61px, '../img/sprite.png', $spritesheet-sprites, );
+
+// The provided mixins are intended to be used with the array-like variables
+//
+// .icon-home {
+//   @include sprite-width($icon-home);
+// }
+//
+// .icon-email {
+//   @include sprite($icon-email);
+// }
+//
+// Example usage in HTML:
+//
+// `display: block` sprite:
+// <div class="icon-home"></div>
+//
+// To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+//
+// // CSS
+// .icon {
+//   display: inline-block;
+// }
+//
+// // HTML
+// <i class="icon icon-home"></i>
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+// The `sprites` mixin generates identical output to the CSS template
+//   but can be overridden inside of SCSS
+//
+// @include sprites($spritesheet-sprites);
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

@@ -1,0 +1,261 @@
+@import "helpers/_helpers";
+
+body {
+  background: #f9f9f9;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 400;
+  color: #333333;
+}
+#app {
+  width: 1040px;
+  margin: 15px auto;
+}
+h1 {
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 28px;
+	margin-bottom: 27px;
+}
+.row {
+  display: flex;
+  margin-bottom: 15px;
+}
+select {
+  min-width: 280px;
+}
+
+.autos {
+  margin-bottom: 15px;
+}
+.autos__auto {
+  width: 385px;
+  background-color: #efefef;
+  margin-bottom: 8px;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #5d5d5d;
+  margin-right: 30px;
+  padding: 15px 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: #f14500;
+    color: #ffffff;
+  }
+}
+.autos__auto.active {
+  background-color: #f14500;
+  color: #ffffff;
+  &::after {
+  	content: '';
+  	position: absolute;
+  	top: 0;
+  	right: -10px;
+  	border-width: 10px 0 10px 10px;
+  	border-style: solid;
+  	border-color: transparent transparent transparent #f14500;
+  	bottom: 0;
+  	margin: auto;
+  	height: 0;
+  }
+}
+.autos__name {
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1;
+  margin-bottom: 5px;
+}
+
+.model {
+  margin-bottom: 15px;
+}
+.model__label {
+  margin-bottom: 3px;
+  font-size: 14px;
+  color: #5d5d5d;
+  display: block;
+  line-height: 1;
+}
+.model__content {
+  display: flex;
+  align-items: center;
+}
+.model__select {
+  margin-right: 10px;
+}
+.model__cost {
+	color: #303030;
+	font-weight: 700;
+}
+
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.options__item {
+  display: flex;
+  flex: 0 0 auto;
+  width: 50%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  padding-right: 30px;
+  // @include odd() {padding-right: 30px;}
+}
+.options__name {
+  color: #5d5d5d;
+  flex-grow: 1;
+  padding-right: 30px;
+  label {
+    cursor: pointer;
+  }
+}
+.options__cost {
+  color: #303030;
+  font-weight: 700;
+  flex: 0 0 auto;
+  width: 70px;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  position: absolute;
+  left: -9999px;
+  + label::before {
+    content: " ";
+    position: absolute;
+    left: -30px;
+    @include sprite($nocheked);
+  }
+}
+input[type="checkbox"]:checked  {
+  + label::before {
+    content: " ";
+    @include sprite($checked);
+  }
+}
+label {
+	display: inline-block;
+	position: relative;
+	margin-left: 31px;
+	vertical-align: top;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.form {
+  background-color: #f2f2f2;
+  padding: 50px;
+  display: flex;
+}
+.info-wrapper {
+  flex: 0 0 auto;
+  width: 362px;
+  .total {
+  	color: #fe1c00;
+  	font-size: 27px;
+  	font-weight: 700;
+    margin-bottom: 15px;
+  }
+  .text {
+    display: flex;
+    .col {
+      flex: 0 0 auto;
+      width: 50%;
+    }
+    .ttl {
+      color: #303030;
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .small {
+      color: #5d5d5d;
+      font-size: 14px;
+    }
+  }
+}
+.wf {
+  input[type="text"] {
+    padding-top: 12px;
+    padding-bottom: 15px;
+    padding-left: 54px;
+    border: 1px solid #9a9a9a;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .wf__fields {
+    display: flex;
+  }
+  .wf__field {
+    margin-right: 10px;
+    flex: 0 0 auto;
+    width: 50%;
+  }
+  .wf__email {
+    margin-right: 10px;
+    input {
+      background: #fff url(../img/email.png) 21px 16px no-repeat;
+    }
+  }
+  .wf__phone {
+    input {
+      background: #fff url(../img/phone.png) 21px 14px no-repeat;
+    }
+  }
+}
+.wf__political {
+  margin: 10px 0;
+  font-size: 12px;
+}
+.wf__action {
+  div {
+    background-color: #ffffff;
+  	width: 209px;
+  	height: 44px;
+  	border: none;
+  	font-size: 14px;
+    padding-top: 13px;
+    box-sizing: border-box;
+  	color: #222;
+  	font-family: HelveticaNeueRoman;
+  	text-align: left;
+  	text-transform: uppercase;
+  	text-indent: 20px;
+  	cursor: pointer;
+    position: relative;
+    font-weight: 700;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      @include sprite($butbg);
+    }
+    &:hover {
+      background-color: #8297a4;
+    	color: #fff;
+      &:after {
+        @include sprite($arrowhov);
+      }
+    }
+  }
+}
+
+
+.template-config {
+	border: 1px solid burlywood;
+	padding: 15px;
+  margin: 60px 0;
+  h2 {
+    margin-top: 0;
+  }
+  .cont {
+  	border-left: 2px solid burlywood;
+  	padding-left: 15px;
+  }
+}
